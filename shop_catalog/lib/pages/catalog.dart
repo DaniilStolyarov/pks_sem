@@ -38,20 +38,15 @@ class CatalogState extends State<Catalog>
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.symmetric(vertical: 15),
-        child: ListView.builder(
+        child: GridView.builder(
+           gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                childAspectRatio: 21/20),
           padding: const EdgeInsets.symmetric(vertical: 0),
           itemCount: shopItems.length,
           itemBuilder: (BuildContext context, int index) {
             return GestureDetector(
-              child: Stack(children: [CardPreview(shopItems: shopItems, index: index),
-              Positioned(
-                  right: -10,
-                  top: -10,
-                  child: IconButton(
-                    icon: Icon(Icons.close, color: Colors.red, size: 40,),
-                    onPressed: () => removeItem(index),
-                  )),
-              ]),
+              child: CardPreview(shopItem: shopItems[index],),
               onTap: () {
                 debugPrint('tapped ${shopItems[index].Name}');
                 Navigator.push(

@@ -56,6 +56,37 @@ class ItemViewState extends State<ItemView> {
           Positioned(
               left: 0,
               right: 0,
+              bottom: 60,
+              child: Container(
+                padding: EdgeInsets.all(16.0),
+                child: ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      backgroundColor: recorded
+                          ? Color.fromARGB(255, 0, 64, 3)
+                          : Color.fromARGB(255, 0, 25, 64),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(
+                            5.0), // Установить радиус закругления
+                      ),
+                      padding: EdgeInsets.all(10.0)),
+                  child: Text(
+                      recorded
+                          ? "Записано - ${widget.shopItem.PriceRubles} руб."
+                          : "Записаться - ${widget.shopItem.PriceRubles} руб.",
+                      style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.w600,
+                          color: Colors.white)),
+                  onPressed: () {
+                    setState(() {
+                      recorded = !recorded;
+                    });
+                  },
+                ),
+              )),
+          Positioned(
+              left: 0,
+              right: 0,
               bottom: 0,
               child: Container(
                 padding: EdgeInsets.all(16.0),
