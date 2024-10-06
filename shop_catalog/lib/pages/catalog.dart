@@ -2,6 +2,8 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shop_catalog/components/card_preview.dart';
+import 'package:shop_catalog/main.dart';
+import 'package:shop_catalog/models/global_data.dart';
 import 'package:shop_catalog/models/shop_item.dart';
 import 'package:shop_catalog/pages/add_item.dart';
 import 'package:shop_catalog/pages/item_view.dart';
@@ -15,7 +17,7 @@ class Catalog extends StatefulWidget {
 
 class CatalogState extends State<Catalog>
 {
-  List<ShopItem> shopItems = [];
+  List<ShopItem> shopItems = appData.shopItems;
   @override void initState() {
     super.initState();
     loadShopItems();

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:shop_catalog/main.dart';
 import 'package:shop_catalog/models/shop_item.dart';
 
 class ItemView extends StatefulWidget {
@@ -61,25 +62,35 @@ class ItemViewState extends State<ItemView> {
                 padding: EdgeInsets.all(16.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                      backgroundColor: recorded
-                          ? Color.fromARGB(255, 0, 64, 3)
-                          : Color.fromARGB(255, 0, 25, 64),
+                      backgroundColor: appData.indexOfFavouriteItem(widget.shopItem) == -1
+                          ? Color.fromARGB(255, 83, 10, 69) : Color.fromARGB(255, 43, 4, 35),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(
                             5.0), // Установить радиус закругления
                       ),
                       padding: EdgeInsets.all(10.0)),
                   child: Text(
-                      recorded
-                          ? "Записано - ${widget.shopItem.PriceRubles} руб."
-                          : "Записаться - ${widget.shopItem.PriceRubles} руб.",
+                      appData.indexOfFavouriteItem(widget.shopItem) == -1
+                          ? "Добавить в Избранное"
+                          : "В Избранном",
                       style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w600,
                           color: Colors.white)),
                   onPressed: () {
                     setState(() {
-                      recorded = !recorded;
+                      int indexInFavourites = appData.indexOfFavouriteItem(widget.shopItem);
+                      if (indexInFavourites == -1)
+                      {
+                        // добавить, если нет
+                        appData.favouriteItems.add(widget.shopItem);
+                      }
+                      else
+                      {
+                        // удалить, если есть
+                        appData.favouriteItems.removeAt(indexInFavourites);
+                        appData.favouriteState?.forceUpdateState();
+                      }
                     });
                   },
                 ),

@@ -2,6 +2,7 @@ import 'dart:convert';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:shop_catalog/components/card_preview.dart';
+import 'package:shop_catalog/main.dart';
 import 'package:shop_catalog/models/shop_item.dart';
 import 'package:shop_catalog/pages/add_item.dart';
 import 'package:shop_catalog/pages/item_view.dart';
@@ -15,7 +16,13 @@ class Favourite extends StatefulWidget {
 
 class FavouriteState extends State<Favourite>
 {
-  List<ShopItem> favouriteItems = [];
+  @override
+  void initState() {
+    super.initState();
+    appData.favouriteState = this;
+  }
+
+  List<ShopItem> favouriteItems = appData.favouriteItems;
   void addItem(ShopItem item) {
     setState(() {
       favouriteItems.add(item);
@@ -26,6 +33,15 @@ class FavouriteState extends State<Favourite>
     setState(() {
       favouriteItems.removeAt(index);
     });
+  }
+  void forceUpdateState()
+  {
+    if (mounted)
+    {
+      setState(() {
+        
+      });
+    }
   }
   @override
   Widget build(BuildContext context) {

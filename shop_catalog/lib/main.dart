@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:shop_catalog/models/shop_item.dart';
 import 'package:shop_catalog/pages/account.dart';
 import 'package:shop_catalog/pages/favourite.dart';
+import 'models/global_data.dart';
 import 'pages/catalog.dart';
-
+GlobalData appData = GlobalData();
 void main() {
   runApp(const MyApp());
 }
-
 class MyApp extends StatefulWidget {
   const MyApp({super.key});
   @override
@@ -15,7 +16,6 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   int selectedIndex = 0;
-
   List<Widget> pages = [Catalog(), Favourite(), AccountPage()];
   @override
   Widget build(BuildContext context) {
