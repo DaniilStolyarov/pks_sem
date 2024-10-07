@@ -46,3 +46,7 @@
 
 ![изображение](https://github.com/user-attachments/assets/59097220-748c-4243-9576-2bdb2bc21739)
 
+![изображение](https://github.com/user-attachments/assets/cfb773aa-9e15-4e8a-a691-4ae30949c4ae)
+
+# Результат (.gif)
+
