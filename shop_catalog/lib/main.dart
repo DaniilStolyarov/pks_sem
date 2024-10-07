@@ -31,12 +31,14 @@ class _MyAppState extends State<MyApp> {
         ),
         body: pages[selectedIndex],
         bottomNavigationBar: BottomNavigationBar(
-          items:const [
+          items:const <BottomNavigationBarItem>[
             BottomNavigationBarItem(icon: Icon(Icons.cut), label: "Стрижки"),
             BottomNavigationBarItem(icon: Icon(Icons.favorite), label: "Избранные"),
-            BottomNavigationBarItem(icon: Icon(Icons.verified_user), label: "Профиль")
+            BottomNavigationBarItem(icon: Icon(Icons.person), label: "Профиль")
           ],
-          currentIndex: 0,
+          selectedItemColor: Colors.deepPurple,
+          currentIndex: selectedIndex,
+          useLegacyColorScheme: true,
           onTap: (int barItemIndex) => {
             setState(() {
               selectedIndex = barItemIndex;
